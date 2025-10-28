@@ -2,79 +2,147 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/drawer.dart';
 
 class ProductsPage extends StatelessWidget {
-  const ProductsPage({super.key});
-
-  final List<Map<String, String>> products = const [
-    {'name': 'Laptop Pro', 'price': '\$1200', 'icon': '💻'},
-    {'name': 'Smart Watch', 'price': '\$250', 'icon': '⌚'},
-    {'name': 'Wireless Buds', 'price': '\$150', 'icon': '🎧'},
-    {'name': '4K Monitor', 'price': '\$450', 'icon': '🖥'},
+  final List<Map<String, dynamic>> products = [
+    {
+      'name': 'iphone 17 ProMax',
+      'image': 'assets/iphone.jpeg',
+      'price': 999.00,
+    },
+    {
+      'name': 'samsung s25 Ultra',
+      'image': 'assets/samsung.jpeg',
+      'price': 850.50,
+    },
+    {'name': 'vivo x 200 pro', 'image': 'assets/vivo.jpeg', 'price': 550.99},
+    {
+      'name': 'xiaomi 17 proMAX',
+      'image': 'assets/xiaomi.jpeg',
+      'price': 420.00,
+    },
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange,
-        title: const Text('🛒 Product List'),
+        title: const Text('🛍️ Products list'),
+        backgroundColor: Colors.amberAccent,
+        foregroundColor: Colors.black, // ປັບສີຕົວອັກສອນ
       ),
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.grey.shade100, // ປັບສີພື້ນຫຼັງ
       drawer: AppDrawer(),
-      body: ListView.builder(
+      body: GridView.builder(
+        padding: const EdgeInsets.all(10),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          childAspectRatio: 0.75, // ປັບຕາມຂະໜາດທີ່ເໝາະສົມ
+        ),
         itemCount: products.length,
         itemBuilder: (context, index) {
           final product = products[index];
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
-            child: Dismissible(
-              key: ValueKey(product['name']),
-              background: Container(
-                color: Colors.red,
-                alignment: Alignment.centerRight,
-                padding: const EdgeInsets.only(right: 20.0),
-                child: const Icon(Icons.delete, color: Colors.white),
-              ),
-              onDismissed: (direction) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('${product['name']} dismissed (Deleted)!'),
-                  ),
-                );
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.red,
-                      spreadRadius: 5,
-                      blurRadius: 5,
+          return Card(
+            elevation: 6,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(15),
                     ),
-                  ],
-                ),
-                child: ListTile(
-                  leading: CircleAvatar(
-                    backgroundColor: Colors.deepPurple.shade100,
-                    child: Text(
-                      product['icon']!,
-                      style: const TextStyle(fontSize: 20),
-                    ),
-                  ),
-                  title: Text(
-                    product['name']!,
-                    style: const TextStyle(fontWeight: FontWeight.w600),
-                  ),
-                  trailing: Text(
-                    product['price']!,
-                    style: const TextStyle(
-                      color: Colors.amber,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                    child: Image.asset(
+                      product['image']!,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
                     ),
                   ),
                 ),
-              ),
+                Expanded(
+                  flex: 2,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 8, 10, 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          product['name']!,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: 4),
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                '\$${(product['price'] as double).toStringAsFixed(2)}',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.deepOrange,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 30,
+                                width: 85,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'ເພີ່ມ ${product['name']} ເຂົ້າກະຕ່າແລ້ວ!',
+                                        ),
+                                        duration: const Duration(
+                                          milliseconds: 800,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.teal.shade600,
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 5,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
+                                  child: const Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.shopping_cart,
+                                        size: 14,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        'ເພີ່ມ',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           );
         },
@@ -82,68 +150,3 @@ class ProductsPage extends StatelessWidget {
     );
   }
 }
-// import 'package:flutter/material.dart';
-// import 'package:flutter_application_1/drawer.dart';
-
-// class ProductsPage extends StatelessWidget {
-//   final List<Map<String, String>> products = [
-//     {'name': 'iphone', 'image': 'assets/iphone.jpeg'},
-//     {'name': 'samsung', 'image': 'assets/samsung.jpeg'},
-//     {'name': 'vivo', 'image': 'assets/vivo.jpeg'},
-//     {'name': 'xiaomi', 'image': 'assets/xiaomi.jpeg'},
-//   ];
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text('Products list ')),
-//       drawer: AppDrawer(),
-//       body: GridView.builder(
-//         padding: EdgeInsets.all(10),
-//         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//           crossAxisCount: 2,
-//           crossAxisSpacing: 10,
-//           mainAxisSpacing: 10,
-//         ),
-//         itemCount: products.length,
-//         itemBuilder: (context, index) {
-//           return Card(
-//             elevation: 4,
-//             shape: RoundedRectangleBorder(
-//               borderRadius: BorderRadius.circular(10),
-//             ),
-//             child: Column(
-//               children: [
-//                 Expanded(
-//                   child: ClipRRect(
-//                     borderRadius: BorderRadius.vertical(
-//                       top: Radius.circular(10),
-//                     ),
-//                     child: Image.asset(
-//                       products[index]['image']!,
-//                       fit: BoxFit.cover,
-//                       width: double.infinity,
-//                     ),
-//                   ),
-//                 ),
-//                 Padding(
-//                   padding: const EdgeInsets.all(8.0),
-//                   child: Text(
-//                     products[index]['name']!,
-//                     style: TextStyle(fontWeight: FontWeight.bold),
-//                   ),
-//                 ),
-//                 ElevatedButton(
-//                   onPressed: () {
-//                     Navigator.pushNamed(context, '/developer');
-//                   },
-//                   child: Text("Go to developer"),
-//                 ),
-//               ],
-//             ),
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
