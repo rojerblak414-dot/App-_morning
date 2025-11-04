@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/change.dart';
 import 'package:flutter_application_1/developer_page.dart';
 import 'package:flutter_application_1/home_page.dart';
+import 'package:flutter_application_1/imageslider.dart';
 import 'package:flutter_application_1/product_page.dart';
 
 void main() {
@@ -22,6 +24,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => HomePage(),
         '/products': (context) => ProductsPage(),
         '/developer': (context) => DeveloperPage(),
+        '/imageslider': (context) => ImageSlider(),
+        '/change': (context) => Change(),
       },
     );
   }

@@ -35,7 +35,7 @@ class DeveloperPage extends StatelessWidget {
                 ),
                 child: const CircleAvatar(
                   radius: 70,
-                  backgroundImage: AssetImage("assets/oak.jpg"),
+                  backgroundImage: AssetImage("assets/images/oak.jpg"),
                 ),
               ),
               const SizedBox(height: 30),

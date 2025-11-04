@@ -5,18 +5,22 @@ class ProductsPage extends StatelessWidget {
   final List<Map<String, dynamic>> products = [
     {
       'name': 'iphone 17 ProMax',
-      'image': 'assets/iphone.jpeg',
+      'image': 'assets/images/iphone.jpeg',
       'price': 999.00,
     },
     {
       'name': 'samsung s25 Ultra',
-      'image': 'assets/samsung.jpeg',
+      'image': 'assets/images/samsung.jpeg',
       'price': 850.50,
     },
-    {'name': 'vivo x 200 pro', 'image': 'assets/vivo.jpeg', 'price': 550.99},
+    {
+      'name': 'vivo x 200 pro',
+      'image': 'assets/images/vivo.jpeg',
+      'price': 550.99,
+    },
     {
       'name': 'xiaomi 17 proMAX',
-      'image': 'assets/xiaomi.jpeg',
+      'image': 'assets/images/xiaomi.jpeg',
       'price': 420.00,
     },
   ];

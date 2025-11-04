@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
               ),
               child: CircleAvatar(
                 radius: 60,
-                backgroundImage: AssetImage("assets/oak.jpg"),
+                backgroundImage: AssetImage("assets/images/oak.jpg"),
               ),
             ),
             const SizedBox(height: 30),

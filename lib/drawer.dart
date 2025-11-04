@@ -11,7 +11,7 @@ class AppDrawer extends StatelessWidget {
             accountName: Text("seub KeoMaNeeSouk"),
             accountEmail: Text("rojerblak414@gmail.com"),
             currentAccountPicture: CircleAvatar(
-              backgroundImage: AssetImage("assets/oak.jpg"),
+              backgroundImage: AssetImage("assets/images/oak.jpg"),
             ),
           ),
           ListTile(
@@ -28,6 +28,16 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.person),
             title: Text("developer"),
             onTap: () => Navigator.popAndPushNamed(context, '/developer'),
+          ),
+          ListTile(
+            leading: Icon(Icons.person),
+            title: Text("imageslider"),
+            onTap: () => Navigator.popAndPushNamed(context, '/imageslider'),
+          ),
+          ListTile(
+            leading: Icon(Icons.person),
+            title: Text("change"),
+            onTap: () => Navigator.popAndPushNamed(context, '/change'),
           ),
         ],
       ),
