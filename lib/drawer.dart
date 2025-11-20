@@ -41,8 +41,8 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.person),
-            title: Text("instapost"),
-            onTap: () => Navigator.popAndPushNamed(context, '/instaPost'),
+            title: Text("RestaurantList"),
+            onTap: () => Navigator.popAndPushNamed(context, '/RestaurantList'),
           ),
         ],
       ),

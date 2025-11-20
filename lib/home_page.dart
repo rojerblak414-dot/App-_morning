@@ -92,6 +92,25 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 15),
+            SizedBox(
+              width: 200,
+              height: 45,
+              child: OutlinedButton.icon(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/RestaurantList');
+                },
+                icon: const Icon(Icons.code_outlined, color: Colors.teal),
+                label: const Text("RestaurantList"),
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: Colors.teal,
+                  side: BorderSide(color: Colors.teal.shade400, width: 2),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
