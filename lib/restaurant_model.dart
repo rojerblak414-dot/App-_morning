@@ -21,4 +21,6 @@ class Restaurant {
       tel: data['tel'] ?? 'No Tel',
     );
   }
+
+  String? get imageUrl => null;
 }

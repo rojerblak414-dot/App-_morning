@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/change.dart';
 import 'package:flutter_application_1/developer_page.dart';
 import 'package:flutter_application_1/firebase_options.dart';
 import 'package:flutter_application_1/home_page.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/developer': (context) => DeveloperPage(),
         '/imageslider': (context) => ImageSlider(),
         '/RestaurantList': (context) => RestaurantList(),
+        '/change': (context) => ChangeColor(),
       },
     );
   }
